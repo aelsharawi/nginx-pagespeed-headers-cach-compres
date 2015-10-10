@@ -23,4 +23,13 @@
 	--without-http_upstream_least_conn_module \
 	--without-http_userid_module \
 	--without-http_uwsgi_module \
-	--add-module=../ngx_pagespeed-release-1.9.32.10-beta
+	--with-http_ssl_module \
+	--with-http_spdy_module \
+        --with-http_gzip_static_module \
+        --without-mail_pop3_module \
+        --without-mail_imap_module \
+        --without-mail_smtp_module \
+	--add-module=../ngx_pagespeed-release-1.9.32.10-beta \
+        --add-module=../ngx_brotli
+#        --with-cpu-opt=pentium4 \
+

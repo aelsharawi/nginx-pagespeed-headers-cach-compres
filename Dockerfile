@@ -2,13 +2,17 @@ FROM ubuntu:14.04.3
 MAINTAINER Peter Tonoli "dockernginxtra@metaverse.org"
 ENV http_proxy 'http://proxy.intra.metaverse.org:3128'
 ENV https_proxy 'http://proxy.intra.metaverse.org:3128'
+# Statically compile Brotli at the moment, as the library isn't in the Ubuntu mainline yet
+ENV NGX_BROTLI_STATIC_MODULE_ONLY=1
 RUN echo 'Acquire::http::Proxy "http://proxy.intra.metaverse.org:3142/";' > /etc/apt/apt.conf.d/proxy
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get -y install checkinstall \
 	libpcre3-dev \
 	zlib1g-dev \
 	libpcre3 \
-	unzip
+	unzip \ 
+	git \
+	libssl-dev
 RUN apt-get clean
 
 ADD http://nginx.org/download/nginx-1.9.0.tar.gz /root/build/
@@ -23,6 +27,9 @@ WORKDIR /root/build/ngx_pagespeed-release-1.9.32.10-beta
 COPY /1.9.32.10.tar.gz /root/build/ngx_pagespeed-release-1.9.32.10-beta/
 WORKDIR /root/build/ngx_pagespeed-release-1.9.32.10-beta
 RUN tar -xvzf 1.9.32.10.tar.gz
+
+WORKDIR /root/build/ngx_brotli
+RUN git clone https://github.com/google/ngx_brotli.git /root/build/ngx_brotli/
 
 ADD ./resource/configure.sh /root/build/nginx-1.9.0/
 WORKDIR /root/build/nginx-1.9.0

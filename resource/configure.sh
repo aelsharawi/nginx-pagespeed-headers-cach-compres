@@ -22,4 +22,5 @@
 	--without-http_upstream_keepalive_module \
 	--without-http_upstream_least_conn_module \
 	--without-http_userid_module \
-	--without-http_uwsgi_module
+	--without-http_uwsgi_module \
+	--add-module=../ngx_pagespeed-release-1.9.32.10-beta

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t metaverseorg/buildnginx .
+docker build -no-cache -t metaverseorg/buildnginx .

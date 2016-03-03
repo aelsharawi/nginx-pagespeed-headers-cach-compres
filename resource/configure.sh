@@ -1,35 +1,39 @@
 #!/bin/bash
-
 ./configure \
+	--prefix=/ \
+	--sbin-path=/usr/sbin/ \
 	--conf-path=/etc/nginx/nginx.conf \
+	--with-cc-opt='-g -O2 -fPIE -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2' --with-ld-opt='-Wl,-Bsymbolic-functions -fPIE -pie -Wl,-z,relro -Wl,-z,now' \
+	--http-log-path=/var/log/nginx/access.log  \
 	--error-log-path=/var/log/nginx/error.log \
-	--pid-path=/run/nginx.pid \
+	--http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
 	--with-http_gzip_static_module \
 	--with-http_stub_status_module \
-	--without-http_auth_basic_module \
-	--without-http_browser_module \
-	--without-http_charset_module \
-	--without-http_empty_gif_module \
-	--without-http_geo_module \
-	--without-http_limit_conn_module \
-	--without-http_limit_req_module \
-	--without-http_memcached_module \
-	--without-http_proxy_module \
-	--without-http_referer_module \
-	--without-http_scgi_module \
-	--without-http_split_clients_module \
-	--without-http_upstream_ip_hash_module \
-	--without-http_upstream_keepalive_module \
-	--without-http_upstream_least_conn_module \
-	--without-http_userid_module \
-	--without-http_uwsgi_module \
 	--with-http_ssl_module \
 	--with-http_spdy_module \
         --with-http_gzip_static_module \
         --without-mail_pop3_module \
         --without-mail_imap_module \
         --without-mail_smtp_module \
+	--with-http_realip_module \
+	--with-http_addition_module \
+	--with-http_sub_module \
+	--with-http_dav_module \
+	--with-http_flv_module \
+	--with-http_mp4_module \
+	--with-http_gunzip_module \
+	--with-http_gzip_static_module \
+	--with-http_random_index_module \
+	--with-http_secure_link_module \
+	--with-http_stub_status_module \
+	--with-http_auth_request_module \
+	--with-file-aio \
+	--with-ipv6 \
+	--with-threads \
+	--with-stream \
+	--with-stream_ssl_module \
 	--add-module=../ngx_pagespeed-release-1.9.32.10-beta \
-        --add-module=../ngx_brotli
+        --add-module=../ngx_brotli \
+        --add-module=../nginx-upstream-fair
 #        --with-cpu-opt=pentium4 \
 

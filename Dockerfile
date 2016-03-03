@@ -23,19 +23,23 @@ ADD https://github.com/pagespeed/ngx_pagespeed/archive/release-1.9.32.10-beta.zi
 WORKDIR /root/build
 RUN unzip release-1.9.32.10-beta.zip
 WORKDIR /root/build/ngx_pagespeed-release-1.9.32.10-beta 
-#ADD https://dl.google.com/dl/page-speed/psol/1.9.32.10.tar.gz /root/build/ngx_pagespeed-release-1.9.32.10-beta
-COPY /1.9.32.10.tar.gz /root/build/ngx_pagespeed-release-1.9.32.10-beta/
+ADD https://dl.google.com/dl/page-speed/psol/1.9.32.10.tar.gz /root/build/ngx_pagespeed-release-1.9.32.10-beta/
+#COPY /1.9.32.10.tar.gz /root/build/ngx_pagespeed-release-1.9.32.10-beta/
 WORKDIR /root/build/ngx_pagespeed-release-1.9.32.10-beta
 RUN tar -xvzf 1.9.32.10.tar.gz
 
 WORKDIR /root/build/ngx_brotli
 RUN git clone https://github.com/google/ngx_brotli.git /root/build/ngx_brotli/
 
+WORKDIR /root/build/nginx-upstream-fair
+RUN git clone https://github.com/gnosek/nginx-upstream-fair.git /root/build/nginx-upstream-fair/
+
+
 ADD ./resource/configure.sh /root/build/nginx-1.9.0/
 WORKDIR /root/build/nginx-1.9.0
 RUN chmod a+x configure.sh
-RUN ./configure.sh && make
+RUN ./configure.sh && make -j4
 RUN echo "metaverseorg: Nginx 1.9.0" > description-pak && \
-	checkinstall -Dy --install=no --nodoc make -i install
+	checkinstall --strip --exclude /etc/nginx/* -Dy --install=no --nodoc make -i install
 
 CMD ["/bin/bash"]

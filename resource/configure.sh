@@ -32,7 +32,7 @@
 	--with-threads \
 	--with-stream \
 	--with-stream_ssl_module \
-	--add-module=../ngx_pagespeed-release-1.9.32.10-beta \
+	--add-module=../ngx_pagespeed-release-1.10.33.6-beta \
         --add-module=../ngx_brotli \
         --add-module=../nginx-upstream-fair
 #        --with-cpu-opt=pentium4 \

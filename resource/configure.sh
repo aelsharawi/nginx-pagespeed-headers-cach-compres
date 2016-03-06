@@ -10,7 +10,7 @@
 	--with-http_gzip_static_module \
 	--with-http_stub_status_module \
 	--with-http_ssl_module \
-	--with-http_spdy_module \
+	--with-http_v2_module \
         --with-http_gzip_static_module \
         --without-mail_pop3_module \
         --without-mail_imap_module \

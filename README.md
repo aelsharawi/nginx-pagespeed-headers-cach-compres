@@ -52,4 +52,4 @@ $ sudo dpkg -i --force-overwrite /path/to/nginx_1.9.12-1_amd64.deb
 * Upstream Fair Balancer [https://www.nginx.com/resources/wiki/modules/fair_balancer/#upstream-fair-balancer](https://www.nginx.com/resources/wiki/modules/fair_balancer/#upstream-fair-balancer)
 
 ### Credits:
-[magnetikonline/dockerbuilddeb](https://github.com/magnetikonline/dockerbuilddeb/blob/master/README.md) for the excellent scaffold to build Docker build images.%
+[magnetikonline/dockerbuilddeb](https://github.com/magnetikonline/dockerbuilddeb/blob/master/README.md) for the excellent scaffold to build Docker build images.

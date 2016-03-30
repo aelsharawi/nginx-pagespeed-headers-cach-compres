@@ -26,7 +26,7 @@ $ sudo usermod -aG docker USERNAME
 
 ## Nginx
 - **OS:** Ubuntu 14.04.4 LTS
-- **Version:** 1.9.12
+- **Version:** 1.9.13
 - **Configure:** [resource/configure.sh](resource/configure.sh)
 
 Create and extract package:
@@ -37,14 +37,14 @@ $ ./build.sh
 $ ./extractdeb.sh
 # package extract from container
 
-$ ls -l nginx_1.9.12-1_amd64.deb
--rw-r--r-- 1 root root 3080472 Feb 27 13:51 nginx_1.9.12-1_amd64.deb
+$ ls -l nginx_1.9.13-1_amd64.deb
+-rw-r--r-- 1 root root 3080472 Feb 27 13:51 nginx_1.9.13-1_amd64.deb
 ```
 
 Install on target system:
 ```sh
 # should be no dependent packages needed - based off packaged configure.sh
-$ sudo dpkg -i --force-overwrite /path/to/nginx_1.9.12-1_amd64.deb
+$ sudo dpkg -i --force-overwrite /path/to/nginx_1.9.13-1_amd64.deb
 ```
 
 ### Additional Modules:

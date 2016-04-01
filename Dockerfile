@@ -1,10 +1,7 @@
 FROM ubuntu:14.04.3
 MAINTAINER Peter Tonoli "dockernginxtra@metaverse.org"
-ENV http_proxy 'http://proxy.intra.metaverse.org:3128'
-ENV https_proxy 'http://proxy.intra.metaverse.org:3128'
 # Statically compile Brotli at the moment, as the library isn't in the Ubuntu mainline yet
 ENV NGX_BROTLI_STATIC_MODULE_ONLY=1
-RUN echo 'Acquire::http::Proxy "http://proxy.intra.metaverse.org:3142/";' > /etc/apt/apt.conf.d/proxy
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get -y install checkinstall \
 	libpcre3-dev \

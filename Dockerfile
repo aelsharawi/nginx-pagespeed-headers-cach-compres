@@ -16,14 +16,14 @@ ADD http://nginx.org/download/nginx-1.9.13.tar.gz /root/build/
 WORKDIR /root/build
 RUN tar -xf nginx-1.9.13.tar.gz
 
-ADD https://github.com/pagespeed/ngx_pagespeed/archive/release-1.10.33.6-beta.zip /root/build/
+ADD https://github.com/pagespeed/ngx_pagespeed/archive/release-1.11.33.0-beta.zip /root/build/
 WORKDIR /root/build
-RUN unzip release-1.10.33.6-beta.zip
-WORKDIR /root/build/ngx_pagespeed-release-1.10.33.6-beta 
-ADD https://dl.google.com/dl/page-speed/psol/1.10.33.6.tar.gz /root/build/ngx_pagespeed-release-1.10.33.6-beta/
-#COPY /1.10.33.6.tar.gz /root/build/ngx_pagespeed-release-1.10.33.6-beta/
-WORKDIR /root/build/ngx_pagespeed-release-1.10.33.6-beta
-RUN tar -xvzf 1.10.33.6.tar.gz
+RUN unzip release-1.11.33.0-beta.zip
+WORKDIR /root/build/ngx_pagespeed-release-1.11.33.0-beta 
+ADD https://dl.google.com/dl/page-speed/psol/1.11.33.0.tar.gz /root/build/ngx_pagespeed-release-1.11.33.0-beta/
+#COPY /1.11.33.0.tar.gz /root/build/ngx_pagespeed-release-1.11.33.0-beta/
+WORKDIR /root/build/ngx_pagespeed-release-1.11.33.0-beta
+RUN tar -xvzf 1.11.33.0.tar.gz
 
 WORKDIR /root/build/ngx_brotli
 RUN git clone https://github.com/google/ngx_brotli.git /root/build/ngx_brotli/

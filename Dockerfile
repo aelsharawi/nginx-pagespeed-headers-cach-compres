@@ -12,9 +12,9 @@ RUN apt-get -y install checkinstall \
 	libssl-dev
 RUN apt-get clean
 
-ADD http://nginx.org/download/nginx-1.9.13.tar.gz /root/build/
+ADD http://nginx.org/download/nginx-1.9.14.tar.gz /root/build/
 WORKDIR /root/build
-RUN tar -xf nginx-1.9.13.tar.gz
+RUN tar -xf nginx-1.9.14.tar.gz
 
 ADD https://github.com/pagespeed/ngx_pagespeed/archive/release-1.11.33.0-beta.zip /root/build/
 WORKDIR /root/build
@@ -32,11 +32,11 @@ WORKDIR /root/build/nginx-upstream-fair
 RUN git clone https://github.com/gnosek/nginx-upstream-fair.git /root/build/nginx-upstream-fair/
 
 
-ADD ./resource/configure.sh /root/build/nginx-1.9.13/
-WORKDIR /root/build/nginx-1.9.13
+ADD ./resource/configure.sh /root/build/nginx-1.9.14/
+WORKDIR /root/build/nginx-1.9.14
 RUN chmod a+x configure.sh
 RUN ./configure.sh && make -j4
-RUN echo "metaverseorg: Nginx 1.9.13" > description-pak && \
+RUN echo "metaverseorg: Nginx 1.9.14" > description-pak && \
 	checkinstall --strip --exclude /etc/nginx/* -Dy --install=no --nodoc make -i install
 
 CMD ["/bin/bash"]

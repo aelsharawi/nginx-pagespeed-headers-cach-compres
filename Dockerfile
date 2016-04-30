@@ -1,4 +1,4 @@
-FROM ubuntu:14.04.3
+FROM ubuntu:14.04.4
 MAINTAINER Peter Tonoli "dockernginxtra@metaverse.org"
 # Statically compile Brotli at the moment, as the library isn't in the Ubuntu mainline yet
 ENV NGX_BROTLI_STATIC_MODULE_ONLY=1

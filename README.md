@@ -1,4 +1,4 @@
-# Docker Ubuntu Nginx Pagespeed package builder
+# Docker Ubuntu Nginx Pagespeed, cache, header, openssl builder
 A [Docker](https://www.docker.com) image to build the [Nginx](https://nginx.org) web server with Google's automatic [PageSpeed](https://github.com/pagespeed/ngx_pagespeed) optimisation module using Debian/Ubuntu deb packages. All tested under Ubuntu 14.04LTS, but should work for any host that supports Docker.
 
 - For each package a `Dockerfile` will build the OS image and create the deb package using [`checkinstall`](https://help.ubuntu.com/community/CheckInstall).
@@ -46,6 +46,8 @@ Install on target system:
 # should be no dependent packages needed - based off packaged configure.sh
 $ sudo dpkg -i --force-overwrite nginx_1.10.0-1_amd64.deb
 ```
+
+### Added Openssl build from source
 
 ### Additional Modules:
 * Brotli compression format [https://github.com/google/brotli](https://github.com/google/brotli)

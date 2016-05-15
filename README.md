@@ -1,4 +1,13 @@
 # Docker Ubuntu Nginx Pagespeed, cache, header, openssl builder
+
+remmber to delete the 
+
+check the space
+du -a /var | sort -n -r | head -n 1
+then remove the old dockers:
+
+rm -r /var/lib/docker/aufs/diff
+
 A [Docker](https://www.docker.com) image to build the [Nginx](https://nginx.org) web server with Google's automatic [PageSpeed](https://github.com/pagespeed/ngx_pagespeed) optimisation module using Debian/Ubuntu deb packages. All tested under Ubuntu 14.04LTS, but should work for any host that supports Docker.
 
 - For each package a `Dockerfile` will build the OS image and create the deb package using [`checkinstall`](https://help.ubuntu.com/community/CheckInstall).

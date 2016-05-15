@@ -44,7 +44,7 @@ $ ls -l nginx_1.10.0-1_amd64.deb
 Install on target system:
 ```sh
 # should be no dependent packages needed - based off packaged configure.sh
-$ sudo dpkg -i --force-overwrite /path/to/nginx_1.10.0-1_amd64.deb
+$ sudo dpkg -i --force-overwrite nginx_1.10.0-1_amd64.deb
 ```
 
 ### Additional Modules:

@@ -35,8 +35,8 @@ WORKDIR /root/build/ngx_cache_purge
 RUN git clone https://github.com/FRiCKLE/ngx_cache_purge.git /root/build/ngx_cache_purge
 
 
-WORKDIR /root/build/headers-more
-RUN git clone https://github.com/openresty/headers-more-nginx-module.git /root/build/headers-more
+WORKDIR /root/build/headers-more-nginx-module
+RUN git clone https://github.com/openresty/headers-more-nginx-module.git /root/build/headers-more-nginx-module
 
 
 ADD ./resource/configure.sh /root/build/nginx-1.10.0/

@@ -16,6 +16,8 @@ ADD http://nginx.org/download/nginx-1.10.0.tar.gz /root/build/
 WORKDIR /root/build
 RUN tar -xf nginx-1.10.0.tar.gz
 
+
+
 ADD https://github.com/pagespeed/ngx_pagespeed/archive/release-1.11.33.0-beta.zip /root/build/
 WORKDIR /root/build
 RUN unzip release-1.11.33.0-beta.zip
@@ -28,8 +30,13 @@ RUN tar -xvzf 1.11.33.0.tar.gz
 WORKDIR /root/build/ngx_brotli
 RUN git clone https://github.com/google/ngx_brotli.git /root/build/ngx_brotli/
 
-WORKDIR /root/build/nginx-upstream-fair
-RUN git clone https://github.com/gnosek/nginx-upstream-fair.git /root/build/nginx-upstream-fair/
+
+WORKDIR /root/build/ngx_cache_purge
+RUN git clone https://github.com/FRiCKLE/ngx_cache_purge.git /root/build/ngx_cache_purge
+
+
+WORKDIR /root/build/headers-more-nginx-module
+RUN git clone https://github.com/openresty/headers-more-nginx-module.git /root/build/headers-more-nginx-module
 
 
 ADD ./resource/configure.sh /root/build/nginx-1.10.0/

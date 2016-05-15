@@ -38,11 +38,9 @@ RUN git clone https://github.com/FRiCKLE/ngx_cache_purge.git /root/build/ngx_cac
 WORKDIR /root/build/headers-more-nginx-module
 RUN git clone https://github.com/openresty/headers-more-nginx-module.git /root/build/headers-more-nginx-module
 
-ADD https://www.openssl.org/source/openssl-1.0.1t.tar.gz /root/build/openssl
-WORKDIR /root/build/openssl
+ADD https://www.openssl.org/source/openssl-1.0.1t.tar.gz /root/build/
+WORKDIR /root/build/
 RUN tar -xf openssl-1.0.1t.tar.gz
-
-
 
 ADD ./resource/configure.sh /root/build/nginx-1.10.0/
 WORKDIR /root/build/nginx-1.10.0

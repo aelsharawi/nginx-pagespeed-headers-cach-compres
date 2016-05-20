@@ -38,6 +38,7 @@
         --add-module=../ngx_brotli \
         --add-module=../ngx_cache_purge \
         --add-module=../headers-more-nginx-module \
+        --add-module=../nginx-vod-module \
         
 #        --with-cpu-opt=pentium4 \
 

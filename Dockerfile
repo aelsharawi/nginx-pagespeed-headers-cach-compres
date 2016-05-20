@@ -17,7 +17,6 @@ WORKDIR /root/build
 RUN tar -xf nginx-1.10.0.tar.gz
 
 
-
 ADD https://github.com/pagespeed/ngx_pagespeed/archive/release-1.11.33.0-beta.zip /root/build/
 WORKDIR /root/build
 RUN unzip release-1.11.33.0-beta.zip
@@ -38,9 +37,9 @@ RUN git clone https://github.com/FRiCKLE/ngx_cache_purge.git /root/build/ngx_cac
 WORKDIR /root/build/headers-more-nginx-module
 RUN git clone https://github.com/openresty/headers-more-nginx-module.git /root/build/headers-more-nginx-module
 
-ADD https://www.openssl.org/source/openssl-1.0.2h.tar.gz /root/build/
-WORKDIR /root/build/
-RUN tar -xf openssl-1.0.2h.tar.gz
+#ADD https://www.openssl.org/source/openssl-1.0.2h.tar.gz /root/build/
+#WORKDIR /root/build/
+#RUN tar -xf openssl-1.0.2h.tar.gz
 
 WORKDIR /root/build/nginx-vod-module
 RUN git clone https://github.com/kaltura/nginx-vod-module.git /root/build/nginx-vod-module

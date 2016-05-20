@@ -13,16 +13,15 @@
 	--with-openssl=/root/build/openssl-1.0.2h \
 	--with-http_v2_module \
         --with-http_gzip_static_module \
-        --with-cc-opt \
         --without-mail_pop3_module \
 	--without-mail_imap_module \
 	--without-mail_smtp_module \
 	--with-http_realip_module \
 	--with-http_addition_module \
 	--with-http_sub_module \
-	--with-http_dav_module \
-	--with-http_flv_module \
-	--with-http_mp4_module \
+#	--with-http_dav_module \
+#	--with-http_flv_module \
+#	--with-http_mp4_module \
 	--with-http_gunzip_module \
 	--with-http_gzip_static_module \
 	--with-http_random_index_module \

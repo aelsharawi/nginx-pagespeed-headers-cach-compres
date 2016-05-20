@@ -4,8 +4,8 @@
 	--sbin-path=/usr/sbin/ \
 	--conf-path=/etc/nginx/nginx.conf \
 	--with-cc-opt='-g -O2 -fPIE -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2' --with-ld-opt='-Wl,-Bsymbolic-functions -fPIE -pie -Wl,-z,relro -Wl,-z,now' \
-	--http-log-path=/var/log/nginx/access.log  \
-	--error-log-path=/var/log/nginx/error.log \
+	#--http-log-path=/var/log/nginx/access.log  \
+	#--error-log-path=/var/log/nginx/error.log \
 	--http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
 	--with-http_gzip_static_module \
 	--with-http_stub_status_module \
@@ -40,6 +40,3 @@
         --add-module=../ngx_cache_purge \
         --add-module=../headers-more-nginx-module \
         --add-module=../nginx-vod-module \
-       
-#        --with-cpu-opt=pentium4 \
-

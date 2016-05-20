@@ -39,6 +39,6 @@
         --add-module=../ngx_cache_purge \
         --add-module=../headers-more-nginx-module \
         --add-module=../nginx-vod-module \
-        
+        --with-cc-opt="-O3" \
 #        --with-cpu-opt=pentium4 \
 

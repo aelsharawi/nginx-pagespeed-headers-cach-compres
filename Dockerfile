@@ -42,6 +42,10 @@ ADD https://www.openssl.org/source/openssl-1.0.2h.tar.gz /root/build/
 WORKDIR /root/build/
 RUN tar -xf openssl-1.0.2h.tar.gz
 
+WORKDIR /root/build/nginx-vod-module
+RUN git clone https://github.com/kaltura/nginx-vod-module.git /root/build/nginx-vod-module
+
+
 ADD ./resource/configure.sh /root/build/nginx-1.10.0/
 WORKDIR /root/build/nginx-1.10.0
 RUN chmod a+x configure.sh

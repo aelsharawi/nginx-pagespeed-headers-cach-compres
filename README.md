@@ -1,4 +1,18 @@
-# Docker Ubuntu Nginx Pagespeed package builder
+# Docker Ubuntu Nginx Pagespeed, cache, header, openssl builder
+
+remmber to delete the 
+
+check the space
+du -a /var | sort -n -r | head -n 1
+
+then remove the old dockers:
+
+rm -r /var/lib/docker/aufs/diff
+
+=====
+install this filter https://github.com/bagder/libbrotli 
+===
+
 A [Docker](https://www.docker.com) image to build the [Nginx](https://nginx.org) web server with Google's automatic [PageSpeed](https://github.com/pagespeed/ngx_pagespeed) optimisation module using Debian/Ubuntu deb packages. All tested under Ubuntu 14.04LTS, but should work for any host that supports Docker.
 
 - For each package a `Dockerfile` will build the OS image and create the deb package using [`checkinstall`](https://help.ubuntu.com/community/CheckInstall).
@@ -26,7 +40,7 @@ $ sudo usermod -aG docker USERNAME
 
 ## Nginx
 - **OS:** Ubuntu 14.04.4 LTS
-- **Version:** 1.9.12
+- **Version:** 1.10.0
 - **Configure:** [resource/configure.sh](resource/configure.sh)
 
 Create and extract package:
@@ -37,15 +51,17 @@ $ ./build.sh
 $ ./extractdeb.sh
 # package extract from container
 
-$ ls -l nginx_1.9.12-1_amd64.deb
--rw-r--r-- 1 root root 3080472 Feb 27 13:51 nginx_1.9.12-1_amd64.deb
+$ ls -l nginx_1.10.0-1_amd64.deb
+-rw-r--r-- 1 root root 3080472 Feb 27 13:51 nginx_1.10.0-1_amd64.deb
 ```
 
 Install on target system:
 ```sh
 # should be no dependent packages needed - based off packaged configure.sh
-$ sudo dpkg -i --force-overwrite /path/to/nginx_1.9.12-1_amd64.deb
+$ sudo dpkg -i --force-overwrite nginx_1.10.0-1_amd64.deb
 ```
+
+### Added Openssl build from source
 
 ### Additional Modules:
 * Brotli compression format [https://github.com/google/brotli](https://github.com/google/brotli)

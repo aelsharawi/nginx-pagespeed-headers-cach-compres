@@ -1,10 +1,7 @@
-FROM ubuntu:14.04.3
+FROM ubuntu:14.04.4
 MAINTAINER Peter Tonoli "dockernginxtra@metaverse.org"
-ENV http_proxy 'http://proxy.intra.metaverse.org:3128'
-ENV https_proxy 'http://proxy.intra.metaverse.org:3128'
 # Statically compile Brotli at the moment, as the library isn't in the Ubuntu mainline yet
 ENV NGX_BROTLI_STATIC_MODULE_ONLY=1
-RUN echo 'Acquire::http::Proxy "http://proxy.intra.metaverse.org:3142/";' > /etc/apt/apt.conf.d/proxy
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get -y install checkinstall \
 	libpcre3-dev \
@@ -15,31 +12,44 @@ RUN apt-get -y install checkinstall \
 	libssl-dev
 RUN apt-get clean
 
-ADD http://nginx.org/download/nginx-1.9.12.tar.gz /root/build/
+ADD http://nginx.org/download/nginx-1.10.0.tar.gz /root/build/
 WORKDIR /root/build
-RUN tar -xf nginx-1.9.12.tar.gz
+RUN tar -xf nginx-1.10.0.tar.gz
 
-ADD https://github.com/pagespeed/ngx_pagespeed/archive/release-1.10.33.6-beta.zip /root/build/
+
+ADD https://github.com/pagespeed/ngx_pagespeed/archive/release-1.11.33.2-beta.zip /root/build/
 WORKDIR /root/build
-RUN unzip release-1.10.33.6-beta.zip
-WORKDIR /root/build/ngx_pagespeed-release-1.10.33.6-beta 
-ADD https://dl.google.com/dl/page-speed/psol/1.10.33.6.tar.gz /root/build/ngx_pagespeed-release-1.10.33.6-beta/
-#COPY /1.10.33.6.tar.gz /root/build/ngx_pagespeed-release-1.10.33.6-beta/
-WORKDIR /root/build/ngx_pagespeed-release-1.10.33.6-beta
-RUN tar -xvzf 1.10.33.6.tar.gz
+RUN unzip release-1.11.33.2-beta.zip
+WORKDIR /root/build/ngx_pagespeed-release-1.11.33.2-beta 
+ADD https://dl.google.com/dl/page-speed/psol/1.11.33.2.tar.gz /root/build/ngx_pagespeed-release-1.11.33.2-beta/
+#COPY /1.11.33.0.tar.gz /root/build/ngx_pagespeed-release-1.11.33.0-beta/
+WORKDIR /root/build/ngx_pagespeed-release-1.11.33.2-beta
+RUN tar -xvzf 1.11.33.2.tar.gz
 
 WORKDIR /root/build/ngx_brotli
 RUN git clone https://github.com/google/ngx_brotli.git /root/build/ngx_brotli/
 
-WORKDIR /root/build/nginx-upstream-fair
-RUN git clone https://github.com/gnosek/nginx-upstream-fair.git /root/build/nginx-upstream-fair/
+
+WORKDIR /root/build/ngx_cache_purge
+RUN git clone https://github.com/FRiCKLE/ngx_cache_purge.git /root/build/ngx_cache_purge
 
 
-ADD ./resource/configure.sh /root/build/nginx-1.9.12/
-WORKDIR /root/build/nginx-1.9.12
+WORKDIR /root/build/headers-more-nginx-module
+RUN git clone https://github.com/openresty/headers-more-nginx-module.git /root/build/headers-more-nginx-module
+
+ADD https://www.openssl.org/source/openssl-1.0.2h.tar.gz /root/build/
+WORKDIR /root/build/
+RUN tar -xf openssl-1.0.2h.tar.gz
+
+WORKDIR /root/build/nginx-vod-module
+RUN git clone https://github.com/kaltura/nginx-vod-module.git /root/build/nginx-vod-module
+
+
+ADD ./resource/configure.sh /root/build/nginx-1.10.0/
+WORKDIR /root/build/nginx-1.10.0
 RUN chmod a+x configure.sh
 RUN ./configure.sh && make -j4
-RUN echo "metaverseorg: Nginx 1.9.12" > description-pak && \
+RUN echo "metaverseorg: Nginx 1.10.0" > description-pak && \
 	checkinstall --strip --exclude /etc/nginx/* -Dy --install=no --nodoc make -i install
 
 CMD ["/bin/bash"]

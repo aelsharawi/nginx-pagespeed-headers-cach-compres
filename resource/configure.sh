@@ -13,10 +13,10 @@
 	--with-openssl=/root/build/openssl-1.0.2h \
 	--with-http_v2_module \
         --with-http_gzip_static_module \
-        #--with-cc-opt \
+        --with-cc-opt 
         --without-mail_pop3_module \
-        --without-mail_imap_module \
-        --without-mail_smtp_module \
+	--without-mail_imap_module \
+	--without-mail_smtp_module \
 	--with-http_realip_module \
 	--with-http_addition_module \
 	--with-http_sub_module \

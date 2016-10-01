@@ -10,7 +10,6 @@
 	--with-http_gzip_static_module \
 	--with-http_stub_status_module \
 	--with-http_ssl_module \
-	--with-openssl=/root/build/openssl-1.0.2h \
 	--with-http_v2_module \
         --with-http_gzip_static_module \
         --without-mail_pop3_module \
